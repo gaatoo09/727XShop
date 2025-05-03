@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Compra - 727XShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="background">
+    <div class="neon"></div>
+    <div class="neon neon2"></div>
+  </div>
+
+ 
+  <header class="header-formulario">
+    <img src="assets/conejo.png" alt="Logo 727XShop" class="logo esquina">
+  </header>
+
+ 
+  <div class="formulario-panel">
+    <h2>Formulario de Compra</h2>
+    <p>Recuerda rellenar los datos <strong>Correctamente</strong> para realizar tu compra te llegará un mensaje por Whatsapp.</p>
+
+    <form id="formularioCompra">
+      <input type="hidden" id="input-producto" name="producto" />
+    
+      <label for="contacto">Número de teléfono</label>
+      <input type="text" id="contacto" name="contacto" placeholder="añade el prefijo Ej: el de españa es +34" required />
+    
+      <label for="direccion">Datos de envío (Solo España):</label>
+      <textarea id="direccion" name="direccion" placeholder="Ubicación Calle/Avenida Nº de la calle/vía Piso y puerta" required></textarea>
+    
+      <label for="codigo-postal">Código Postal:</label>
+      <input type="text" id="codigo-postal" name="codigoPostal" placeholder="Ej: 28080" required />
+    
+      <label for="modelo">Modelo del Producto:</label>
+      <input type="text" id="modelo" name="modelo" placeholder="Ej: Vaper de 36k puffs" 
+             onfocus="this.placeholder=''" 
+             onblur="if(this.value==='') this.placeholder='Ej: Vaper de 36k puffs'" required />
+    
+      <label for="cantidad">Cantidad que desea comprar:</label>
+      <input type="number" id="cantidad" name="cantidad" placeholder="1" min="1" required />
+    
+      <div class="botones-formulario">
+        <a href="https://www.instagram.com/727xshop" target="_blank" class="btn">Instagram</a>
+        <button type="submit" class="btn">Enviar Formulario</button>
+      </div>
+    </form>    
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("formularioCompra").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const producto = document.getElementById("input-producto").value;
+      const discord = document.getElementById("contacto").value;
+      const direccion = document.getElementById("direccion").value;
+      const codigoPostal = document.getElementById("codigo-postal").value;
+      const modelo = document.getElementById("modelo").value;
+      const cantidad = document.getElementById("cantidad").value;
+
+      const mensaje = `🛒 **Pedido nuevo desde web (falta Pago).**\n**Producto:** ${producto}\n**Modelo:** ${modelo}\n**Numero:** ${contacto}\n**Dirección:** ${direccion}\n**Código Postal:** ${codigoPostal}\n**Cantidad:** ${cantidad}`;
+
+
+      fetch("https://discord.com/api/webhooks/1367608295015190628/40FGVcHTh0mdfJBOpkJbSe_7x9rB5_zTh5zNIqUWhshpBVQ7x0zHjc1zHIqS_T1j3cqB", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: mensaje })
+      }).then(() => {
+        alert("Formulario enviado correctamente. Ahora abre ticket en discord para realizar el pago");
+        this.reset();
+      }).catch(() => {
+        alert("Error al enviar el formulario.");
+      });
+    });
+  </script>
+
+  <a href="productos.html" class="boton-volver">⬅ Volver a productos</a>
+
+  <footer class="footer">
+    <p>&copy; 2025 727XShop. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

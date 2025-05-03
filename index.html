@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>727XShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="preloader">
+    <img src="assets/conejo.png" alt="Logo Cargando" class="logo-carga">
+  </div>
+
+ 
+  <div id="contenido" class="oculto">
+    <div class="hero-container fila-contactos">
+     
+      <div class="contacto-card">
+        <div class="flip-card auto-rotate">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="assets/ig.png" alt="Instagram" class="logo-grande" />
+              <h2 class="titulo-flip">Instagram</h2>
+            </div>
+            <div class="flip-card-back">
+              <p>Dudas o realizar una compra? Contactame por aquí!!!</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/727xshop?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn btn-separado">Contactar</a>
+      </div>
+    
+     
+      <div class="contacto-card">
+        <div class="flip-card auto-rotate">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="assets/conejo.png" alt="Logo" class="logo-grande" />
+              <h1 class="titulo-flip">727XShop</h1>
+            </div>
+            <div class="flip-card-back">
+              <h2>Bienvenido</h2>
+              <p>Productos de calidad y a buen precio directamente hasta tu puerta.</p>
+            </div>
+          </div>
+        </div>
+        <a href="productos.html" class="btn btn-separado">Ir a la Tienda</a>
+      </div>
+    
+  
+      <div class="contacto-card">
+        <div class="flip-card auto-rotate">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="assets/dc.png" alt="Discord" class="logo-grande" />
+              <h2 class="titulo-flip">Discord</h2>
+            </div>
+            <div class="flip-card-back">
+              <p>Dudas o realizar una compra? Contactame por aquí!!!</p>
+            </div>
+          </div>
+        </div>
+        <a class="btn btn-separado" style="pointer-events: none; cursor: default;">
+          Discord: <span style="color: #fff;">er.catalan</span>
+        </a>                
+      </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 727XShop. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <audio id="musicaFondo" src="musica.mp3" loop></audio>
+
+<button id="btnMute" class="boton-mute">🔊</button>
+
+<script>
+  const audio = document.getElementById("musicaFondo");
+  const btnMute = document.getElementById("btnMute");
+
+  audio.volume = 0.05;
+
+  
+  document.body.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play().catch((e) => {
+        console.warn("Autoplay bloqueado:", e);
+      });
+    }
+  }, { once: true });
+
+  
+  btnMute.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    btnMute.textContent = audio.muted ? "🔇" : "🔊";
+  });
+</script>
+
+</body>
+</html>
