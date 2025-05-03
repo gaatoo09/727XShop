@@ -70,7 +70,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: mensaje })
       }).then(() => {
-        alert("Formulario enviado correctamente. Ahora abre ticket en discord para realizar el pago");
+        alert("Formulario enviado correctamente. Te llegara un mensaje para realizar el pago");
         this.reset();
       }).catch(() => {
         alert("Error al enviar el formulario.");
